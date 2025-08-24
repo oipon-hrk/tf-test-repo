@@ -7,6 +7,7 @@ locals{
     name_prefix = "${local.system_name}"
 }
 
+# VPC
 resource "aws_vpc" "tf-test_vpc" {
   cidr_block = "10.0.0.0/16"
 
@@ -15,6 +16,7 @@ resource "aws_vpc" "tf-test_vpc" {
   }
 }
 
+# Subnet(web)
 resource "aws_subnet" "web_subnet-01" {
   vpc_id = aws_vpc.tf-test_vpc.id
   availability_zone = "ap-northeast-1a"
@@ -25,6 +27,7 @@ resource "aws_subnet" "web_subnet-01" {
   }
 }
 
+# Subnet(api)
 resource "aws_subnet" "api_subnet-01" {
   vpc_id = aws_vpc.tf-test_vpc.id
   availability_zone = "ap-northeast-1a"
@@ -45,6 +48,7 @@ resource "aws_subnet" "api_subnet-02" {
   }
 }
 
+# Subnet(alb)
 resource "aws_subnet" "alb_subnet-01" {
   vpc_id = aws_vpc.tf-test_vpc.id
   availability_zone = "ap-northeast-1a"
@@ -65,6 +69,7 @@ resource "aws_subnet" "alb_subnet-02" {
   }
 }
 
+# Subnet(rds)
 resource "aws_subnet" "rds_subnet-01" {
   vpc_id = aws_vpc.tf-test_vpc.id
   availability_zone = "ap-northeast-1a"

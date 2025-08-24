@@ -8,7 +8,7 @@ locals{
 }
 
 resource "aws_security_group" "web_sg" {
-  vpc_id = aws_vpc.web_vpc.id
+  vpc_id = var.vpc_id
 
   name        = "${local.name_prefix}-sg"
   description = "Allow HTTP access from my IP"
@@ -40,8 +40,9 @@ resource "aws_instance" "imported_ec2" {
   iam_instance_profile                 = "s3-bucket-policy"
   instance_type                        = "t2.micro"
   key_name                             = "oikawa"
-  subnet_id                            = "subnet-041d2b2901fb3a4a3"
+  subnet_id                            = var.web_subnet_id
   tags = {
-    Name = "web-server-01"
+    Name = "${local.name_prefix}-web-server-${var.env}-01"
   }
+
 }
