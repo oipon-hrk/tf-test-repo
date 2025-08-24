@@ -13,13 +13,13 @@ module "vpc" {
     env = var.env
 }
 
-module "ec2" {
-    source = "../../modules/ec2"
-    myip = var.myip
-    env = var.env    
-}
+# module "ec2" {
+#     source = "../../modules/ec2"
+#     myip = var.myip
+#     env = var.env    
+# }
 
-import {
-  id = "i-0174b092a089a3a0b"
-  to = aws_instance.imported_ec2
-}
+# import {
+#   id = "i-0174b092a089a3a0b"
+#   to = aws_instance.imported_ec2
+# }
